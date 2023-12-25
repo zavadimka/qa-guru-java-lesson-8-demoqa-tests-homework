@@ -10,7 +10,7 @@ repositories {
 }
 
 def allureVersion = "2.21.0",
-    selenideVersion = "7.0.3"
+    selenideVersion = "6.19.1"
 
 allure {
     report {
