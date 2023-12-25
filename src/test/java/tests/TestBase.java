@@ -15,29 +15,29 @@ public class TestBase {
     @BeforeAll
     static void beforeAll(){
 
-        Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1480";
-        Configuration.holdBrowserOpen = true;
+        // Configuration.holdBrowserOpen = true;
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
-
-        // Подключаем удалённый браузер для выполнения тестов
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+//                "enableVNC", true,
+//                "enableVideo", true
+//        ));
+//        Configuration.browserCapabilities = capabilities;
+//
+//        // Подключаем удалённый браузер для выполнения тестов
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//
         // Подключаем логгер и добавляем слушателя
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-    }
+//    @AfterEach
+//    void addAttachments() {
+//        Attach.screenshotAs("Last screenshot");
+//        Attach.pageSource();
+//        Attach.browserConsoleLogs();
+//        Attach.addVideo();
+//    }
 }
