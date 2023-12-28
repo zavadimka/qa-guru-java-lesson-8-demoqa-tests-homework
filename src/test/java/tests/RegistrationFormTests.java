@@ -3,9 +3,7 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -17,26 +15,23 @@ public class RegistrationFormTests extends TestBase {
     void successfulRegistrationFormFillingTest() throws IOException {
 
         RegistrationForm registrationForm = new RegistrationForm();
-        Properties properties = new Properties();
-        properties.load(new FileInputStream("src/test/resources/testData/testUser.properties"));
 
-        String pageAddress = "/automation-practice-form";
-
-        String firstName = properties.getProperty("firstName"),
-                lastName = properties.getProperty("lastName"),
-                email = properties.getProperty("email"),
-                gender = properties.getProperty("gender"),
-                mobileNumber = properties.getProperty("mobileNumber"),
-                dayOfBirthday = properties.getProperty("dayOfBirthday"),
-                monthOfBirthday = properties.getProperty("monthOfBirthday"),
-                yearOfBirthday = properties.getProperty("yearOfBirthday"),
-                subject = properties.getProperty("subject"),
-                hobby = properties.getProperty("hobby"),
-                imageName = properties.getProperty("imageName"),
-                imagePath = properties.getProperty("imagePath"),
-                currentAddress = properties.getProperty("currentAddress"),
-                state = properties.getProperty("state"),
-                city = properties.getProperty("city");
+        String pageAddress = "/automation-practice-form",
+                firstName = "Ivan",
+                lastName = "Ivanov",
+                email = "ivanov@ivanov.com",
+                gender = "Male",
+                mobileNumber = "0123456789",
+                dayOfBirthday = "02",
+                monthOfBirthday = "June",
+                yearOfBirthday = "1985",
+                subject = "Maths",
+                hobby = "Sports",
+                imageName = "testImage.png",
+                imagePath = "testData/img/testImage.png",
+                currentAddress = "Montenegro",
+                state = "NCR",
+                city = "Delhi";
 
 
         // заполнение формы регистрации

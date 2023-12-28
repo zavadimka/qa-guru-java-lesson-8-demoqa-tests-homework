@@ -1,184 +1,171 @@
 package tests;
 
-import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static io.qameta.allure.Allure.step;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationForm {
 
     // открыть страницу формы
+    @Step("Open registration form page")
     void openPage(String url) {
-        step("Open registration form page", () ->
-                Selenide.open(url));
+        open(url);
     }
 
     // проверить, что открылась страница формы
+    @Step("Check the registration form header")
     void checkHeader() {
-        step("Check the registration form header", () ->
-                $(".practice-form-wrapper")
-                        .$("h5").shouldBe(visible).shouldHave(text("Student Registration Form")));
+        $(".practice-form-wrapper")
+                .$("h5").shouldBe(visible).shouldHave(text("Student Registration Form"));
     }
 
     // // проверить, что поле First Name пустое
+    @Step("Check empty First Name")
     void checkEmptyFirstName() {
-        step("Check empty First Name", () ->
-                $("#firstName").shouldBe(empty));
+        $("#firstName").shouldBe(empty);
     }
 
     // удалить рекламные баннеры и футер
+    @Step("Remove banners and footer")
     void removeBanners() {
-        step("Remove banners and footer", () -> {
-            executeJavaScript("$('#fixedban').remove()");
-            executeJavaScript("$('footer').remove()");
-        });
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
     }
 
     // прикрепить файл
+    @Step("Upload image")
     void uploadImage(String imagePath) {
-        step("Upload image", () ->
-                $("#uploadPicture").uploadFromClasspath(imagePath));
+        $("#uploadPicture").uploadFromClasspath(imagePath);
     }
 
     // прокрутить экран ниже
+    @Step("Scroll screen down")
     void scrollScreenDown() {
-        step("Scroll screen down", () ->
-                executeJavaScript("window.scrollTo(0, 1000);"));
+        executeJavaScript("window.scrollTo(0, 1000);");
     }
 
     // подтвердить заполнение формы
+    @Step("Submit registration")
     void submitRegistration() {
-        step("Submit registration", () ->
-                $("#submit").click());
+        $("#submit").click();
     }
 
 
     // ввести имя
+    @Step("Set first name")
     void setFirstName(String firstName) {
-        step("Set first name", () ->
-                $("#firstName").setValue(firstName));
+        $("#firstName").setValue(firstName);
     }
 
     // ввести фамилию
+    @Step("Set last name")
     void setLastName(String lastName) {
-        step("Set last name", () ->
-                $("#lastName").setValue(lastName));
+        $("#lastName").setValue(lastName);
     }
 
     // ввести e-mail
+    @Step("Set email")
     void setEmail(String email) {
-        step("Set email", () ->
-                $("#userEmail").setValue(email));
+        $("#userEmail").setValue(email);
     }
 
     // выбрать пол
+    @Step("Set gender")
     void setGender(String gender) {
-        step("Set gender", () ->
-                $("#genterWrapper").$(byText(gender)).click());
+        $("#genterWrapper").$(byText(gender)).click();
     }
 
     // ввести номер мобильного
+    @Step("Set mobile number")
     void setMobileNumber(String mobileNumber) {
-        step("Set mobile number", () ->
-                $("#userNumber").setValue(mobileNumber));
+        $("#userNumber").setValue(mobileNumber);
     }
 
     // выбрать дату рождения
+    @Step("Set date of birth")
     void setDateOfBirth(String yearOfBirthday, String monthOfBirthday, String dayOfBirthday) {
-        step("Set date of birth", () -> {
-            $("#dateOfBirthInput").click();
-            $(".react-datepicker__year-select").click();
-            $(".react-datepicker__year-select").scrollTo().selectOptionByValue(yearOfBirthday);
-            $(".react-datepicker__year-select").selectOptionByValue(yearOfBirthday);
-            $(".react-datepicker__month-select").click();
-            $(".react-datepicker__month-select").selectOption(monthOfBirthday);
-            $(".react-datepicker__day--0" + dayOfBirthday + ":not(.react-datepicker__day--outside-month)").click();
-        });
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").click();
+        $(".react-datepicker__year-select").scrollTo().selectOptionByValue(yearOfBirthday);
+        $(".react-datepicker__year-select").selectOptionByValue(yearOfBirthday);
+        $(".react-datepicker__month-select").click();
+        $(".react-datepicker__month-select").selectOption(monthOfBirthday);
+        $(".react-datepicker__day--0" + dayOfBirthday + ":not(.react-datepicker__day--outside-month)").click();
     }
 
     // ввести subjects
+    @Step("Set subject")
     void setSubject(String subject) {
-        step("Set subject", () -> {
-            $("#subjectsContainer").click();
-            $("#subjectsInput").setValue(subject).pressEnter();
-        });
+        $("#subjectsContainer").click();
+        $("#subjectsInput").setValue(subject).pressEnter();
     }
 
     // выбрать хобби
+    @Step("Set hobby")
     void setHobby(String hobby) {
-        step("Set hobby", () ->
-                $("#hobbiesWrapper").$(byText(hobby)).click());
+        $("#hobbiesWrapper").$(byText(hobby)).click();
     }
 
     // ввести current address
+    @Step("Set current address")
     void setCurrentAddress(String currentAddress) {
-        step("Set current address", () ->
-                $("#currentAddress").setValue(currentAddress));
+        $("#currentAddress").setValue(currentAddress);
     }
 
     // выбрать штат
+    @Step("Set state")
     void setState(String state) {
-        step("Set state", () -> {
-            $("#state").click();
-            $(byText(state)).click();
-        });
+        $("#state").click();
+        $(byText(state)).click();
     }
 
     // выбрать город
+    @Step("Set city")
     void setCity(String city) {
-        step("Set city", () -> {
-            $("#city").click();
-            $(byText(city)).click();
-        });
+        $("#city").click();
+        $(byText(city)).click();
     }
 
 
     // проверить, что появилась заполненная таблица
+    @Step("Check summary table opening")
     void checkSummaryTableOpening() {
-        step("Check summary table opening", () -> {
-            $(".modal-content").shouldBe(visible);
-            $("#example-modal-sizes-title-lg")
-                    .shouldBe(visible)
-                    .shouldHave(text("Thanks for submitting the form"));
-        });
+        $(".modal-content").shouldBe(visible);
+        $("#example-modal-sizes-title-lg")
+                .shouldBe(visible)
+                .shouldHave(text("Thanks for submitting the form"));
     }
-
 
     // проверить корректность данных в заполненной таблице
+    @Step("Summary table verification: {label}")
     void summaryTableVerification(String label, String value) {
-        step("Summary table verification:" + label, () -> {
-            $(".table-responsive").$(byText(label))
-                    .parent().shouldHave(text(value));
-        });
+        $(".table-responsive").$(byText(label))
+                .parent().shouldHave(text(value));
     }
 
+    @Step("Summary table verification: Student Name")
     void nameVerification(String firstName, String lastName) {
-        step("Summary table verification: Student Name", () -> {
-            $(".table-responsive").$(byText("Student Name"))
-                    .parent().shouldHave(text(firstName + " " + lastName));
-        });
+        $(".table-responsive").$(byText("Student Name"))
+                .parent().shouldHave(text(firstName + " " + lastName));
     }
 
+    @Step("Summary table verification: Date of Birth")
     void dateOfBirthVerification(String yearOfBirthday, String monthOfBirthday, String dayOfBirthday) {
-        step("Summary table verification: Date of Birth", () -> {
-            $(".table-responsive").$(byText("Date of Birth"))
-                    .parent().shouldHave(text(dayOfBirthday + " " + monthOfBirthday + "," + yearOfBirthday));
-        });
+        $(".table-responsive").$(byText("Date of Birth"))
+                .parent().shouldHave(text(dayOfBirthday + " " + monthOfBirthday + "," + yearOfBirthday));
     }
 
+    @Step("Summary table verification: State and City")
     void stateAndCityVerification(String state, String city) {
-        step("Summary table verification: State and City", () -> {
-            $(".table-responsive").$(byText("State and City"))
-                    .parent().shouldHave(text(state + " " + city));
-        });
+        $(".table-responsive").$(byText("State and City"))
+                .parent().shouldHave(text(state + " " + city));
     }
 
     // закрыть заполненную таблицу
+    @Step("Close summary table")
     void closeSummaryTable() {
-        step("Close summary table", () ->
-                $("#closeLargeModal").click());
+        $("#closeLargeModal").click();
     }
 }
