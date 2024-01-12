@@ -20,6 +20,7 @@ public class TestUser {
             imageName,
             imagePath,
             currentAddress,
+            permanentAddress,
             state,
             city;
 
@@ -42,8 +43,9 @@ public class TestUser {
             testUser.imageName = testUserData[10];
             testUser.imagePath = testUserData[11];
             testUser.currentAddress = testUserData[12];
-            testUser.state = testUserData[13];
-            testUser.city = testUserData[14];
+            testUser.permanentAddress = testUserData[13];
+            testUser.state = testUserData[14];
+            testUser.city = testUserData[15];
 
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
