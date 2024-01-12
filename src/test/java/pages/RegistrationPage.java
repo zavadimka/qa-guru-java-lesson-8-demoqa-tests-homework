@@ -176,14 +176,12 @@ public class RegistrationPage {
 
     @Step("Check required fields red warnings")
     public void checkRequiredFieldsWarnings() {
-        String valueName = "border-color";
-        String colorRed = "rgb(220, 53, 69)";
         userForm.shouldHave(cssClass("was-validated"));
         firstNameInput.shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
         lastNameInput.shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
         genderInput.$("label[for='gender-radio-1']").shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
         genderInput.$("label[for='gender-radio-2']").shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
         genderInput.$("label[for='gender-radio-3']").shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
-        mobilePhoneInput.shouldHave(cssValue("border-color",colorRed));
+        mobilePhoneInput.shouldHave(cssValue("border-color","rgb(220, 53, 69)"));
     }
 }
