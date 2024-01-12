@@ -15,23 +15,7 @@ public class RegistrationTests extends TestBase {
     void successfulRegistrationFormFillingTestWithAllInputData() throws IOException {
 
         RegistrationPage registrationPage = new RegistrationPage();
-
-        TestUser testUser = new TestUser();
-        testUser.firstName = "Ivan";
-        testUser.lastName = "Ivanov";
-        testUser.email = "ivanov@ivanov.com";
-        testUser.gender = "Male";
-        testUser.mobileNumber = "0123456789";
-        testUser.yearOfBirthday = "1985";
-        testUser.monthOfBirthday = "June";
-        testUser.dayOfBirthday = "02";
-        testUser.subject = "Maths";
-        testUser.hobby = "Sports";
-        testUser.imageName = "testImage.png";
-        testUser.imagePath = "testData/img/testImage.png";
-        testUser.currentAddress = "Montenegro";
-        testUser.state = "NCR";
-        testUser.city = "Delhi";
+        TestUser testUser = TestUser.getTestUserDataFromCsv();
 
         step("### Fill the form", () -> {
             registrationPage.openPage()
@@ -67,23 +51,7 @@ public class RegistrationTests extends TestBase {
     void successfulRegistrationFormFillingTestWithMinInputData() throws IOException {
 
         RegistrationPage registrationPage = new RegistrationPage();
-
-        TestUser testUser = new TestUser();
-        testUser.firstName = "Ivan";
-        testUser.lastName = "Ivanov";
-        testUser.email = "ivanov";
-        testUser.gender = "Male";
-        testUser.mobileNumber = "0123456789";
-        testUser.yearOfBirthday = "02";
-        testUser.monthOfBirthday = "June";
-        testUser.dayOfBirthday = "1985";
-        testUser.subject = "Maths";
-        testUser.hobby = "Sports";
-        testUser.imageName = "testImage.png";
-        testUser.imagePath = "testData/img/testImage.png";
-        testUser.currentAddress = "Montenegro";
-        testUser.state = "NCR";
-        testUser.city = "Delhi";
+        TestUser testUser = TestUser.getTestUserDataFromCsv();
 
         step("### Fill the form", () -> {
             registrationPage.openPage()
