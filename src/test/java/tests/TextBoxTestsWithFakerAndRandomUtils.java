@@ -3,19 +3,20 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
+import testData.TestUser;
 
 import java.io.IOException;
 
 import static io.qameta.allure.Allure.step;
 
-public class TextBoxTests extends TestBase {
+public class TextBoxTestsWithFakerAndRandomUtils extends TestBase {
 
     @Test
     @DisplayName("Text Box form filling test")
     void textBoxFormFillingTest() throws IOException {
 
         TextBoxPage textBoxPage = new TextBoxPage();
-        TestUser testUser = TestUser.getTestUserDataFromCsv();
+        TestUser testUser = TestUser.getRandomTestUserData();
 
         step("### Fill the form", () -> {
             textBoxPage.openPage()

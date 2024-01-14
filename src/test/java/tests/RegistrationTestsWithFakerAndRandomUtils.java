@@ -3,19 +3,20 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import testData.TestUser;
 
 import java.io.IOException;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
-public class RegistrationTests extends TestBase {
+public class RegistrationTestsWithFakerAndRandomUtils extends TestBase {
 
     @Test
     @DisplayName("Successful registration test with all input data")
     void successfulRegistrationFormFillingTestWithAllInputData() throws IOException {
 
         RegistrationPage registrationPage = new RegistrationPage();
-        TestUser testUser = TestUser.getTestUserDataFromCsv();
+        TestUser testUser = TestUser.getRandomTestUserData();
 
         step("### Fill the form", () -> {
             registrationPage.openPage()
@@ -51,7 +52,7 @@ public class RegistrationTests extends TestBase {
     void successfulRegistrationFormFillingTestWithMinInputData() throws IOException {
 
         RegistrationPage registrationPage = new RegistrationPage();
-        TestUser testUser = TestUser.getTestUserDataFromCsv();
+        TestUser testUser = TestUser.getRandomTestUserData();
 
         step("### Fill the form", () -> {
             registrationPage.openPage()
