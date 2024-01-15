@@ -100,18 +100,18 @@ public class TestUser {
         testUser.firstName = faker.name().firstName();
         testUser.lastName = faker.name().lastName();
         testUser.email = RandomUtils.getRandomEmail();
-        testUser.gender = RandomUtils.getRandomValue(testUser.genders);
-        testUser.mobileNumber = RandomUtils.getRandomPhoneNumber(10);
+        testUser.gender = faker.options().option(testUser.genders);
+        testUser.mobileNumber = faker.number().digits(10);
         testUser.dayOfBirthday = testDate.day;
         testUser.monthOfBirthday = testDate.month;
         testUser.yearOfBirthday = testDate.year;
-        testUser.subject = RandomUtils.getRandomValue(testUser.subjects);
-        testUser.hobby = RandomUtils.getRandomValue(testUser.hobbies);
+        testUser.subject = faker.options().option(testUser.subjects);
+        testUser.hobby = faker.options().option(testUser.hobbies);
         testUser.imageName = "testImage.png";
         testUser.imagePath = "img/testImage.png";
         testUser.currentAddress = faker.address().streetAddress();
         testUser.permanentAddress = faker.address().secondaryAddress();
-        testUser.state = RandomUtils.getRandomValue(testUser.states);
+        testUser.state = faker.options().option(testUser.states);
         testUser.city = RandomUtils.getRandomCity(testUser.state);
 
         return testUser;
